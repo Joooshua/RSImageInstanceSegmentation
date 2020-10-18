@@ -1,5 +1,6 @@
 # HR-Net for Remote Sensing Images Instance Segmentation
-![testimg](test/image_B/1925.jpg) 
+![testimg](test/image_B/1925.jpg)
+
 ![testlab](test/results_B/1925.jpg)
 The environment is on Linux + GPU
 
@@ -13,7 +14,8 @@ The training dataset is in './train', where
 (2)'./train/labels' contains labels in the dataset
 
 The training dataset can be shown
-![trainimg](train/images/695.jpg) 
+![trainimg](train/images/695.jpg)
+
 ![trainlab](train/labels/695.jpg)
 
 The test set is in './test', where
