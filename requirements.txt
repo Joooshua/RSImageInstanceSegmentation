@@ -1,0 +1,8 @@
+torch==1.2.0
+torchvision==1.2.0
+tqdm==4.49.0
+opencv-python==4.4.0.42
+Pillow
+tensorboardX==1.2
+prettytable==0.7.2
+torchcontrib==0.0.2
