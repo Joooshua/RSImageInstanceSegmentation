@@ -13,8 +13,8 @@ from tqdm import tqdm
 
 from torchvision import transforms
 
-os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="1, 2"  # specify which GPU(s) to be used
+#os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+#os.environ["CUDA_VISIBLE_DEVICES"]="1, 2"  # specify which GPU(s) to be used
 
 input_path = './test/image_B/'
 output_path = './test/results_B3/'
