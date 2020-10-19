@@ -1,8 +1,5 @@
 # HR-Net for Remote Sensing Images Instance Segmentation
 
-![testimg](test/image_B/1925.jpg)
-![testlab](test/results_B/1925.jpg)
-
 ![trainimg](train/images/695.jpg)
 ![trainlab](train/labels/695.jpg)
 
