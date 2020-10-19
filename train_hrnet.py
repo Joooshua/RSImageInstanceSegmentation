@@ -17,8 +17,8 @@ from PIL import Image
 from collections import OrderedDict
 from tensorboardX import SummaryWriter
 
-os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="0,1"  # specify which GPU(s) to be used
+#os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+#os.environ["CUDA_VISIBLE_DEVICES"]="0,1"  # specify which GPU(s) to be used
 
 directory = "./%s/%s/" % ('hrnet', 'v2_1006')
 if not os.path.exists(directory):
