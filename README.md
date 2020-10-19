@@ -3,71 +3,89 @@
 ![testimg](test/image_B/1925.jpg)
 ![testlab](test/results_B/1925.jpg)
 
+![trainimg](train/images/695.jpg)
+![trainlab](train/labels/695.jpg)
+
 The environment is on Linux + GPU
 
 Any questions or discussions are welcomed!
 
-## Directories
-The training dataset is in './train', where
+## Code Structure
 
-(1)'./train/images' contains images in the dataset
+Below is a quick overview of the function of each file.
 
-(2)'./train/labels' contains labels in the dataset
+```bash
+########################### Data ##############################################################
 
-The training dataset can be shown
+train/                           	# default folder for the dataset
+    images/                  	 	# folder for images in the dataset
+    labels/			 	# folder for labelss in the dataset
+test/                            	# default folder for storing the output during training
+    image_B/                  	 	# folder for ShanghaiTech dataset (Huang et al.)
+    results_B/                   	# folder for ShanghaiTech dataset (Huang et al.)
 
-![trainimg](train/images/695.jpg)
-![trainlab](train/labels/695.jpg)
+########################### Code ##############################################################
+libs/                           	# libs module so you can "import libs" in other scripts
+    nn/                         	 
+    	parallel/			# functions for wrapping the network during training
+		data_parallel.py	
+        modules/                	# functions for synchronized batchnorm over multiple GPU devices
+		batchnorm.py		 
+		comm.py	
+		replicate.py
+		unittest.py
+    metric.py                   	# functions for evaluation metrics
+    lr_scheduler.py             	# different learning rate schedulers
+    average_meter.py            	# functions for averaging the training loss
+models/
+    hrnet_v2/                   
+	HRNet.py			# neural network structure
+dataloader.py                   	# script for pre-processing the dataset
+train_hrnet.py                  	# script for training the neural network
+predict_hrnet.py                	# script for post-processing and inferencing the model
+```
 
-The test set is in './test', where
+## Reproducing Results
 
-(1)'./test/image_B' contains images for the testing
+### Installation
 
-(2)'./test/results_B' contains labels generated using our models
+For the ease of reproducibility, you are suggested to install [miniconda](https://docs.conda.io/en/latest/miniconda.html) (or [anaconda](https://www.anaconda.com/distribution/) if you prefer) before following executing the following commands. 
 
-In directory 'models/', High-Resolution Nets used for this task is defined as HRNetV2(n_class)
+```bash
+git clone https://github.com/Joooshua/RSImageInstanceSegmentation
+conda create -y -n RSImage
+conda activate RSImage
+# Replace cudatoolkit=10.1 with your CUDA version: https://pytorch.org/
+conda install -y pytorch cudatoolkit=10.1 -c pytorch
+conda install -y tensorboardx -c conda-forge
+pip install requirements.txt
+```
 
-## Testing  ——  predict_hrnet.py
+### Pre-trained Models
 
-Downloading the pretrain_model [Baidu Netdisk](https://pan.baidu.com/s/1Zbsd-NAI9MGXVGCwCjd2sg) (code: 64h8)
+You can download our reference pre-trained models from [Baidu Netdisk](https://pan.baidu.com/s/1Zbsd-NAI9MGXVGCwCjd2sg) (code: 64h8).
 
-Chaning the parameters 'weight_path' in './predict_hrnet.py'
+### Downloading the Processed Dataset
 
-Running python train_hrnet.py in this directory
+Make sure `curl` is installed on your system and execute.
+
+You can download the training dataset into directory './train'
+
+And download the Image A/B testset into directory './test'
+
+### Testing
+
+Running python predict_hrnet.py in this directory to generate mask for different geographic classes.
         
-        input_path:     The directory containing test images (default: './test/image_B/')
-        			You can change it in 'predict_hrnet.py'
-
-        output_path:    The directory where the results are written into (default: './test/results_B/')
-		        	You can change it in 'predict_hrnet.py'
-        
-        model:          The model used (default: HRNetV2(n_class))
-        
-        matches：       The type of results we generate for each class (default: [100, 200, 300, 400, 500, 600, 700, 800])
-        			You can change it in 'predict_hrnet.py'
-
-        weights_path：  The path of the downloaded weight file
+```bash
+python predict_hrnet.py
+```
 
 
-## Model Training  ——  train_hrnet.py
+### Model Training
 
-Running python train_hrnet.py in this directory
+Running python train_hrnet.py in this directory.
 
-        model:          The model used (default: HRNetV2(n_class))
-	                	You can use other models by adding models into './models'
-
-        image_folder:   The directory containing training images (default: './train/images')
-				You can change it in './dataloader.py'
-
-        label_folder:   The directory containing training labels (default: '/train/labels')
-	              		You can change it in './dataloader.py'
-
-        n_class:        The number of instance classes (default: 8)
-	            		class_names = ['water', 'transportation', 'architecture', 'cultivated', 'grassland', 'forest', 'soil', 'others']
-	            		You can change it in './train_hrnet.py'
-
-        batch_size:  	The batch size for training (default: 64)
-	             		You can change it in './dataloader.py'
-
-        weight_path：   The weight path for pre-trained model weights (default: None)
-				You can set it in './train_hrnet.py'
+```bash
+python train_hrnet.py
+```
