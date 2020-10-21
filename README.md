@@ -50,12 +50,12 @@ For the ease of reproducibility, you are suggested to install [miniconda](https:
 
 ```bash
 git clone https://github.com/Joooshua/RSImageInstanceSegmentation
-conda create -y -n RSImage
+conda create -y -n RSImage python=3.7
 conda activate RSImage
 # Replace cudatoolkit=10.1 with your CUDA version: https://pytorch.org/
 conda install -y pytorch cudatoolkit=10.1 -c pytorch
 conda install -y tensorboardx -c conda-forge
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Pre-trained Models
