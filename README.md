@@ -3,6 +3,10 @@
 ![trainimg](train/images/695.jpg)
 ![trainlab](train/labels/695.jpg)
 
+|     <img src="train/images/695.jpg" width="180">      |    <img src="train/labels/695.jpg" width="180">    |
+| :--------------------------------------------------:  |  :-----------------------------------------------: |
+|                      Images                           |                       Labels                       |
+
 The environment is on Linux + GPU
 
 Any questions or discussions are welcomed!
