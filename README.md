@@ -1,9 +1,6 @@
 # HR-Net for Remote Sensing Images Instance Segmentation
 
-![trainimg](train/images/695.jpg)
-![trainlab](train/labels/695.jpg)
-
-|     <img src="train/images/695.jpg" width="180">      |    <img src="train/labels/695.jpg" width="180">    |
+|     <img src="train/images/695.jpg" width="300">      |    <img src="train/labels/695.jpg" width="300">    |
 | :--------------------------------------------------:  |  :-----------------------------------------------: |
 |                      Images                           |                       Labels                       |
 
